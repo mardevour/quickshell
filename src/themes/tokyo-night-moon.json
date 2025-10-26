@@ -1,0 +1,37 @@
+{
+  "metadata": {
+    "name": "Tokyo Night Moon",
+    "license": "GPL v3", 
+    "author": "Mar"
+  },
+  "colors": {
+    "accent": "color2",
+    "bg": "#1a1b26",
+    "bg_alt": "#2A2A36",
+    "bg_trans": "#de1a1b26",
+    "bg_alt_trans": "#de2A2A36",
+    "bg_hover": "#50a9b1d6", 
+    "fg": "#ffffff",
+    "border": "#2f334d",
+    "border_hover": "#444b6a",
+    "ws_inactive": "#4fa9b1d6",
+    "separator": "#6ba9b1d6",
+    
+    "color0": "#c0caf5",
+    "color1": "#f7768e", 
+    "color2": "#9ece6a",
+    "color3": "#e0af68",
+    "color4": "#7aa2f7",
+    "color5": "#bb9af7",
+    "color6": "#7dcfff", 
+    "color7": "#a9b1d6",
+    "color8": "#565f89",
+    "color9": "#f7768e",
+    "color10": "#9ece6a",
+    "color11": "#e0af68",
+    "color12": "#7aa2f7",
+    "color13": "#bb9af7", 
+    "color14": "#7dcfff",
+    "color15": "#c0caf5"
+  }
+}
