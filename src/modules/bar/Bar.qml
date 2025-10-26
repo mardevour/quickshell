@@ -93,7 +93,7 @@ PanelWindow {
                 icon: ""
                 iconColor: Theme.accent
                 launchesWindow: true
-                windowPath: "/home/mar/.config/quickshell/modules/ControlCenter/ControlCenter.qml"
+                windowPath: "/home/mar/.config/quickshell/modules/controlCenter/ControlCenter.qml"
                 iconSize: Theme.barCenterIconSize
                 height: Theme.barHeight - Theme.barElementMargin
                 anchors.verticalCenter: parent.verticalCenter
