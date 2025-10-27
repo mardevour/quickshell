@@ -21,8 +21,6 @@ ShellRoot {
         model: Quickshell.screens
         delegate: Bar {
             screen: modelData
-            width: modelData.width
-            height: modelData.height
         }
     }
     Background {}
