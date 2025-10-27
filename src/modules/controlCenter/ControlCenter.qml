@@ -126,11 +126,11 @@ PanelWindow {
                             textFormat: Text.RichText
                         }
                         Text {
-                            text: "<span style='color: " + Theme.accent + "'>󰣇</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>" + "Arch Linux" + "</span>"
+                            text: "<span style='color: " + Theme.accent + "'>󰣇</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>Arch Linux</span>"
                             textFormat: Text.RichText
                         }
                         Text {
-                            text: "<span style='color: " + Theme.accent + "'></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>" + uptime + "</span>"
+                            text: "<span style='color: " + Theme.accent + "'></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>uptime&nbsp;" + uptime + "</span>"
                             textFormat: Text.RichText
                         }
                     }

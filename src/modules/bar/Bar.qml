@@ -10,15 +10,15 @@ import "../../components/indicators/" as Indicators
 
 PanelWindow {
     id: bar
-    screen: {
-        var monitors = Quickshell.screens;
-        for (var i = 0; i < monitors.length; i++) {
-            if (monitors[i].name === "DVI-D-1") {
-                return monitors[i]
-            }
-        }
-        return monitors[0]
-    }
+    // screen: {
+    //     var monitors = Quickshell.screens;
+    //     for (var i = 0; i < monitors.length; i++) {
+    //         if (monitors[i].name === "DVI-D-1") {
+    //             return monitors[i]
+    //         }
+    //     }
+    //     return monitors[0]
+    // }
     anchors {
         top: true
         left: true

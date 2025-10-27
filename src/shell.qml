@@ -1,7 +1,9 @@
 //@ pragma UseQApplication
 import Quickshell
 import Quickshell.Io
-import QtQuick 2.15
+import Quickshell.Wayland
+import QtQuick
+import QtQml.Models
 
 import "core"
 import "core/services"
@@ -14,7 +16,14 @@ ShellRoot {
     Component.onCompleted: {
         config.loadConfig()
     }
-	
-    Bar {}
+    // instanciar una Bar{} en cada monitor
+	Instantiator {
+        model: Quickshell.screens
+        delegate: Bar {
+            screen: modelData
+            width: modelData.width
+            height: modelData.height
+        }
+    }
     Background {}
 }
