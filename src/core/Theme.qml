@@ -88,53 +88,27 @@ QtObject {
 
     function applyColors(colors) {
         try {
-            console.log("=== THEME.APPLYCOLORS INICIADO ===")
-            console.log("[Theme] Colors recibidos:", JSON.stringify(colors))
-            console.log("[Theme] colors.accent:", colors.accent)
-            console.log("[Theme] Theme.accent antes:", accent)
-
             function resolve(v) {
-                console.log("[Theme] Resolviendo:", v)
                 if (v && colors[v]) {
-                    console.log("[Theme] Resuelto a:", colors[v])
                     return colors[v];
                 }
-                console.log("[Theme] Usando valor directo:", v)
                 return v;
             }
-
-            console.log("[Theme] Asignando accent...")
             accent = resolve(colors.accent) || accent
-            console.log("[Theme] Theme.accent después:", accent)
             
-            console.log("[Theme] Asignando bg...")
             bg = colors.bg || bg
-            console.log("[Theme] bg después:", bg)
             
-            // Añade logs para TODAS las asignaciones
-            console.log("[Theme] Asignando bgAlt...")
             bgAlt = colors.bg_alt || bgAlt
-            console.log("[Theme] Asignando bgTrans...")
             bgTrans = colors.bg_trans || bgTrans
-            console.log("[Theme] Asignando bgAltTrans...")
             bgAltTrans = colors.bg_alt_trans || bgAltTrans
-            console.log("[Theme] Asignando bgHover...")
             bgHover = colors.bg_hover || bgHover
-            console.log("[Theme] Asignando bgAltHover...")
             bgAltHover = colors.bg_alt_hover || bgAltHover
-            console.log("[Theme] Asignando fg...")
             fg = colors.fg || fg
-            console.log("[Theme] Asignando border...")
             border = colors.border || border
-            console.log("[Theme] Asignando borderHover...")
             borderHover = colors.border_hover || borderHover
-            console.log("[Theme] Asignando wsInactive...")
             wsInactive = colors.ws_inactive || wsInactive
-            console.log("[Theme] Asignando separatorColor...")
             separatorColor = colors.separator || separatorColor
 
-            // Asignar colores individuales
-            console.log("[Theme] Asignando colores 0-15...")
             color0 = colors.color0 || color0
             color1 = colors.color1 || color1 
             color2 = colors.color2 || color2
@@ -152,12 +126,8 @@ QtObject {
             color14 = colors.color14 || color14
             color15 = colors.color15 || color15
 
-            console.log("=== THEME.APPLYCOLORS COMPLETADO ===")
         } catch (error) {
-            console.error("=== ERROR EN APPLYCOLORS ===")
-            console.error("Error:", error)
-            console.error("Stack:", error.stack)
-            console.error("=== FIN ERROR ===")
+            console.error("[Theme]", error)
         }
     }
 
