@@ -5,15 +5,15 @@
     "author": "Mar"
   },
   "colors": {
-    "accent": "color2",
     "bg": "#1a1b26",
     "bg_alt": "#2A2A36",
     "bg_trans": "#de1a1b26",
     "bg_alt_trans": "#de2A2A36",
-    "bg_hover": "#50a9b1d6", 
+    "bg_hover": "#50a9b1d6",
+    "bg_alt_hover": "#85686880",
     "fg": "#ffffff",
     "border": "#2f334d",
-    "border_hover": "#444b6a",
+    "border_hover": "#646b8f",
     "ws_inactive": "#4fa9b1d6",
     "separator": "#6ba9b1d6",
     

@@ -9,6 +9,7 @@ import Quickshell.Io
 import "../../core"
 import "../../core/services"
 import "./" as Here
+import "../../components"
 import "../../components/buttons" as Buttons
 import "../../components/controls" as Controls
 
@@ -148,7 +149,7 @@ PanelWindow {
                             width: Theme.centerIconSize + 5
 
                             launchesWindow: true
-                            windowPath: "/home/mar/.config/quickshell/modules/windows/SettingsModule.qml"
+                            windowPath: "/home/mar/.config/quickshell/modules/settings/SettingsWindow.qml"
 
                             onClickedCallback: function() {
                                 mainCenterWindow.visible = false
@@ -206,7 +207,6 @@ PanelWindow {
                     }
 
                     onToggleCallback: function() {
-                        console.log("Icon clicked:", icon)
                         AudioService.source.audio.muted = !AudioService.source.audio.muted
                     }
                 }

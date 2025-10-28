@@ -13,9 +13,7 @@ Rectangle {
     property string iconColor: ""
     property string command: ""
     property var commandArgs: []
-    //property color textColor: "white"
     property int iconSize: 20
-    //property alias fontFamily: textItem.font.family
 
     property bool launchesWindow
     property var window: null

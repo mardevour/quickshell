@@ -18,4 +18,4 @@ else
     echo -e "${PINK}[INFO]${RESET} starting quickshell..."
 fi
 
-quickshell
+quickshell &

@@ -10,15 +10,6 @@ import "../../components/indicators/" as Indicators
 
 PanelWindow {
     id: bar
-    // screen: {
-    //     var monitors = Quickshell.screens;
-    //     for (var i = 0; i < monitors.length; i++) {
-    //         if (monitors[i].name === "DVI-D-1") {
-    //             return monitors[i]
-    //         }
-    //     }
-    //     return monitors[0]
-    // }
     anchors {
         top: true
         left: true
@@ -68,6 +59,17 @@ PanelWindow {
             spacing: 0
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+
+            Buttons.Button {
+                id: test
+                icon: ""
+                iconColor: Theme.accent
+                launchesWindow: true
+                windowPath: "/home/mar/.config/quickshell/modules/settings/SettingsWindow.qml"
+                iconSize: Theme.barCenterIconSize
+                height: Theme.barHeight - Theme.barElementMargin
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
         Row {
