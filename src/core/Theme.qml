@@ -44,7 +44,7 @@ QtObject {
     property int barTrayIconSize: 17
     property int barCenterIconSize: 29
     property int barLauncherIconSize: 24
-    property int barNotificationIconSize: 17
+    property int barNotificationIconSize: 22
 
     property int barIFontSize: 15
 
