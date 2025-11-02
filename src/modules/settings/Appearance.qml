@@ -124,6 +124,7 @@ Rectangle {
                     Layout.fillWidth: true
                     font.pixelSize: 14
                     font.family: Theme.font
+                    font.weight: Theme.fontWeight
                 }
                 Label {
                     text: "Tema para el modo oscuro"
@@ -131,6 +132,7 @@ Rectangle {
                     Layout.fillWidth: true
                     font.pixelSize: 14
                     font.family: Theme.font
+                    font.weight: Theme.fontWeight
                 }
             }
 
@@ -165,6 +167,7 @@ Rectangle {
                 color: Theme.fg
                 font.pixelSize: 14
                 font.family: Theme.font
+                font.weight: Theme.fontWeight
             }
             Row {
                 anchors.horizontalCenter: parent.horizontalCenter

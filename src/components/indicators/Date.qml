@@ -21,15 +21,17 @@ Rectangle {
         Text {
             id: dateText
             text: (systemClock?.date?.toLocaleDateString(Qt.locale(), "ddd, d"))
-            font.family: "Noto Sans Medium"
+            font.family: Theme.font
+            font.weight: Theme.fontWeight
             font.pixelSize: Theme.barIFontSize
             color: Theme.fg
             anchors.verticalCenter: parent.verticalCenter
             visible: true
         }
         Text {
-            text: " · "
-            font.family: "Noto Sans Medium"
+            text: "·"
+            font.family: Theme.font
+            font.weight: Theme.fontWeight
             font.pixelSize: Theme.barIFontSize
             color: Theme.fg
             anchors.verticalCenter: parent.verticalCenter
@@ -37,7 +39,8 @@ Rectangle {
         Text {
             id: timeText
             text: (systemClock?.date?.toLocaleTimeString(Qt.locale(), "HH:mm"))
-            font.family: "Noto Sans Medium"
+            font.family: Theme.font
+            font.weight: Theme.fontWeight
             font.pixelSize: Theme.barIFontSize
             color: Theme.fg
             anchors.verticalCenter: parent.verticalCenter

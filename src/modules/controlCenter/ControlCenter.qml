@@ -119,17 +119,57 @@ PanelWindow {
 
                     ColumnLayout {
                         Layout.leftMargin: Theme.centerWindowPadding
-                        Text {
-                            text: "<span style='color: " + Theme.accent + "'></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>" + username + "</span>"
-                            textFormat: Text.RichText
+                        spacing: 0
+
+                        Row {
+                            spacing: 5
+                            Text {
+                                text: ""
+                                color: Theme.accent
+                                font.pixelSize: 17
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                text: username
+                                color: Theme.fg
+                                font.family: Theme.font
+                                font.weight: Theme.fontWeight
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
-                        Text {
-                            text: "<span style='color: " + Theme.accent + "'>󰣇</span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>Arch Linux</span>"
-                            textFormat: Text.RichText
+
+                        Row {
+                            spacing: 5
+                            Text {
+                                text: "󰣇"
+                                color: Theme.accent
+                                font.pixelSize: 18
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                text: "Arch Linux"
+                                color: Theme.fg
+                                font.family: Theme.font
+                                font.weight: Theme.fontWeight
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
-                        Text {
-                            text: "<span style='color: " + Theme.accent + "'></span>&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: " + Theme.fg + "'>uptime&nbsp;" + uptime + "</span>"
-                            textFormat: Text.RichText
+
+                        Row {
+                            spacing: 5
+                            Text {
+                                text: ""
+                                color: Theme.accent
+                                font.pixelSize: 19
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                text: "uptime " + uptime
+                                color: Theme.fg
+                                font.family: Theme.font
+                                font.weight: Theme.fontWeight
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
                     }
                     // spacer

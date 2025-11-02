@@ -86,7 +86,8 @@ Rectangle {
         anchors.rightMargin: 5
 
         color: Theme.fg
-        font.family: "Noto Sans Medium"
+        font.family: Theme.font
+        font.weight: Theme.fontWeight
         font.pixelSize: Theme.barIFontSize
         anchors.verticalCenter: parent.verticalCenter
     }

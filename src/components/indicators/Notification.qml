@@ -27,7 +27,7 @@ Rectangle {
         text: ""
         anchors.centerIn: parent
         color: Theme.fg
-        font.family: "JetBrainsMono Nerd Font Mono"
+        font.family: Theme.font
         font.pixelSize: Theme.barNotificationIconSize
     }
 }

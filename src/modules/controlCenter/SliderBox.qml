@@ -78,6 +78,7 @@ Rectangle {
                     text: name
                     color: Theme.fg
                     font.bold: true
+                    font.family: Theme.font
                 }
                 Item {
                     Layout.fillWidth: true
@@ -129,6 +130,7 @@ Rectangle {
                     Text {
                         id: sliderTag
                         text: Math.round(root.value * 100) + "%"
+                        font.family: Theme.font
                         color: Theme.fg
                         Layout.preferredWidth: 40
                         Layout.alignment: Qt.AlignVCenter

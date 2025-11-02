@@ -59,16 +59,29 @@ PanelWindow {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
 
-            Buttons.Button {
-                id: test
-                icon: ""
-                iconColor: Theme.accent
-                launchesWindow: true
-                windowPath: "/home/mar/.config/quickshell/modules/settings/SettingsWindow.qml"
-                iconSize: Theme.barCenterIconSize
-                height: Theme.barHeight - Theme.barElementMargin
-                anchors.verticalCenter: parent.verticalCenter
-            }
+            // debug settings button
+            // Buttons.Button {
+            //     id: test
+            //     icon: ""
+            //     iconColor: Theme.accent
+            //     launchesWindow: true
+            //     windowPath: "/home/mar/.config/quickshell/modules/settings/SettingsWindow.qml"
+            //     iconSize: Theme.barIconSize
+            //     height: Theme.barHeight - Theme.barElementMargin
+            //     anchors.verticalCenter: parent.verticalCenter
+            // }
+            // debug reload button
+            // Buttons.Button {
+            //     id: reload
+            //     icon: ""
+            //     iconColor: Theme.accent
+            //     launchesWindow: false
+            //     command: "bash"
+            //     commandArgs: ["-c", "nohup /home/mar/Devel/shell/src/init > /dev/null 2>&1 &"]
+            //     iconSize: Theme.barIconSize
+            //     height: Theme.barHeight - Theme.barElementMargin
+            //     anchors.verticalCenter: parent.verticalCenter
+            // }
         }
 
         Row {

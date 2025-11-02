@@ -67,7 +67,7 @@ Rectangle {
         text: root.icon || root.text
         anchors.centerIn: parent
         color: root.iconColor
-        font.family: "JetBrainsMono Nerd Font Mono"
+        font.family: Theme.font
         font.pixelSize: root.iconSize
     }
 }

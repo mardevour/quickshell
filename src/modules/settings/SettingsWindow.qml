@@ -74,6 +74,7 @@ Window {
                                 color: Theme.fg
                                 font.pixelSize: 15
                                 font.family: Theme.font
+                                font.weight: Theme.fontWeight
                             }
                         }
 
@@ -182,7 +183,7 @@ Window {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: icon
                         font.pixelSize: 24
-                        font.family: "Noto Sans Medium"
+                        font.family: Theme.font
                         color: Theme.fg
                         renderType: Text.NativeRendering
                     }
@@ -192,7 +193,8 @@ Window {
                         text: name
                         color: Theme.fg
                         font.pixelSize: 12
-                        font.family: "Noto Sans Medium"
+                        font.family: Theme.font
+                        font.weight: Theme.fontWeight
                         renderType: Text.NativeRendering
                     }
                 }
