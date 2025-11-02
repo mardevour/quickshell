@@ -1,13 +1,12 @@
 import QtQuick
-import Quickshell
 import Quickshell.Io
 
 import "../../core"
 
 Rectangle {
+    id: launcher
     height: Theme.barHeight
     width: 30
-    id: launcher
     color: mouseArea.containsMouse ? Theme.bgHover : "transparent"
     radius: Theme.buttonRadius
 

@@ -1,6 +1,5 @@
 pragma Singleton
 import QtQuick
-import Quickshell
 import Quickshell.Services.Pipewire
 
 Item {
@@ -24,12 +23,12 @@ Item {
     }
 
     function setVolume(newValue) {
-        volumeOut = newValue
-        sink.audio.volume = newValue
-        //console.log("vol changed: ", + newValue)
+        volumeOut = newValue;
+        sink.audio.volume = newValue;
+    //console.log("vol changed: ", + newValue)
     }
 
     function toggleMute(object) {
-        object = !object
+        object = !object;
     }
 }

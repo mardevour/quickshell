@@ -31,7 +31,7 @@ QtObject {
 
     property string launcherIconColor: accent
 
-    property string wallpaper: "/home/mar/Imágenes/fondos/walls-catppuccin-mocha/cabin.png"
+    property string wallpaper: "/home/mar/Imágenes/fondos/walls-catppuccin-mocha/clouds-5.jpg"
 
     // sizes, margins, borders, etc
     // bar

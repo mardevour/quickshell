@@ -1,17 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
-import Quickshell
-import Quickshell.Widgets
 
 import "../../core"
-import "../../core/services"
 import "../../components/controls" as Controls
 
 Rectangle {
     id: root
     Layout.fillWidth: true
-    Layout.leftMargin: 7 
+    Layout.leftMargin: 7
     Layout.rightMargin: 7
     height: 70
     radius: 8
@@ -25,8 +21,8 @@ Rectangle {
     property bool inactive
     property real value
 
-    property var onValueChangedCallback: function(newValue) {}
-    property var onToggleCallback: function() {}
+    property var onValueChangedCallback: function (newValue) {}
+    property var onToggleCallback: function () {}
 
     ColumnLayout {
         anchors.fill: parent
@@ -58,8 +54,8 @@ Rectangle {
                     radius: 5
 
                     Text {
-                        anchors.centerIn: parent
                         id: iconButton
+                        anchors.centerIn: parent
                         text: icon
                         color: inactive ? Theme.color1 : Theme.fg
                         font.bold: true
@@ -72,7 +68,7 @@ Rectangle {
                         cursorShape: Qt.PointingHandCursor
 
                         onClicked: {
-                            root.onToggleCallback()
+                            root.onToggleCallback();
                         }
                     }
                 }
@@ -104,7 +100,7 @@ Rectangle {
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
-                    console.log("Header clicked (excluding icon)")
+                    console.log("Header clicked (excluding icon)");
                 }
             }
         }

@@ -1,23 +1,18 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Quickshell
-import Quickshell.Widgets
-import Quickshell.Wayland
-import Quickshell.Io
 
 import "../../core"
 import "../../core/services"
-import "../../components/buttons" as Buttons
 
 Window {
     id: settingsMenu
-    
+
     width: 500
     height: 500
     minimumWidth: 850
     color: Theme.bg
-    
+
     // flags para hacer la ventana gestionable por el compositor
     flags: Qt.Window | Qt.WindowTitleHint | Qt.WindowSystemMenuHint | Qt.WindowMinMaxButtonsHint | Qt.WindowCloseButtonHint
 
@@ -29,22 +24,22 @@ Window {
     // cargar y aplicar config
     property var config: ConfigHandler {}
     Component.onCompleted: {
-        config.loadConfig()
+        config.loadConfig();
     }
 
     Item {
         anchors.fill: parent
-        Keys.onPressed: (event) => {
-            switch(event.key) {
-                case Qt.Key_Escape:
-                    settingsMenu.destroy()
-                    event.accepted = true
-                    break
+        Keys.onPressed: event => {
+            switch (event.key) {
+            case Qt.Key_Escape:
+                settingsMenu.destroy();
+                event.accepted = true;
+                break;
             }
         }
-        
+
         Component.onCompleted: {
-            forceActiveFocus()
+            forceActiveFocus();
         }
 
         Rectangle {
@@ -54,7 +49,7 @@ Window {
             RowLayout {
                 anchors.fill: parent
                 spacing: 0
-                
+
                 // sidebar
                 Rectangle {
                     id: sidebar
@@ -64,15 +59,15 @@ Window {
                     color: Theme.bgAlt
                     layer.enabled: true
                     layer.smooth: true
-                    
+
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 0
-                        
+
                         Item {
                             Layout.preferredHeight: 80
                             Layout.fillWidth: true
-                            
+
                             Text {
                                 anchors.centerIn: parent
                                 text: qsTr("Configuración [WIP]")
@@ -81,7 +76,7 @@ Window {
                                 font.family: Theme.font
                             }
                         }
-                        
+
                         // Lista de elementos del menú
                         ListView {
                             id: menuList
@@ -96,7 +91,7 @@ Window {
                             // no tengo claro q hace esto pero parece mejorar el rendimiento
                             boundsBehavior: Flickable.StopAtBounds
                             maximumFlickVelocity: 2000
-                            
+
                             ScrollIndicator.vertical: ScrollIndicator {
                                 id: scrollIndicator
                                 active: menuList.moving
@@ -104,21 +99,21 @@ Window {
                         }
                     }
                 }
-                
+
                 // Separador
                 Rectangle {
                     Layout.preferredWidth: 1
                     Layout.fillHeight: true
                     color: Theme.border
                 }
-                
+
                 Rectangle {
                     id: contentArea
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     color: "transparent"
                     clip: true
-                    
+
                     Loader {
                         id: contentLoader
                         anchors.fill: parent
@@ -127,7 +122,7 @@ Window {
                         asynchronous: true
                         onLoaded: {
                             if (item) {
-                                item.forceActiveFocus()
+                                item.forceActiveFocus();
                             }
                         }
                     }
@@ -153,11 +148,10 @@ Window {
                 page: "Setup.qml"
             }
         }
-        
+
         Component {
             id: menuDelegate
-            
-            
+
             Rectangle {
                 id: menuItem
                 width: parent.width
@@ -170,20 +164,20 @@ Window {
                 color: menuItemArea.containsMouse ? Theme.bgAltHover : (menuList.currentIndex == index ? Theme.bgAltHover : Theme.bgAlt)
                 border.color: menuItemArea.containsMouse ? Theme.borderHover : (menuList.currentIndex == index ? Theme.borderHover : "transparent")
                 radius: Theme.buttonRadius + 2
-                                
+
                 MouseArea {
                     id: menuItemArea
                     anchors.fill: parent
                     hoverEnabled: true
                     onClicked: {
-                        menuList.currentIndex = index
+                        menuList.currentIndex = index;
                     }
                 }
-                
+
                 Column {
                     anchors.centerIn: parent
                     spacing: 5
-                    
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: icon
@@ -192,7 +186,7 @@ Window {
                         color: Theme.fg
                         renderType: Text.NativeRendering
                     }
-                    
+
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: name
@@ -212,7 +206,7 @@ Window {
             height: 30
             radius: Theme.buttonRadius
             color: cancelArea.containsMouse ? Theme.bgHover : "transparent"
-            
+
             anchors {
                 top: parent.top
                 right: parent.right
@@ -226,7 +220,7 @@ Window {
                 font.bold: true
                 anchors.centerIn: parent
             }
-            
+
             MouseArea {
                 id: cancelArea
                 anchors.fill: parent

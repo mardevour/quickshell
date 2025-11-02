@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Widgets
 
 import "../../core"
@@ -39,7 +38,7 @@ WrapperRectangle {
             id: quickshellButton
             label: "Quickshell"
             icon: "file:///home/mar/.config/quickshell/assets/quickshell.svg"
-            command: ["bash", "-c", "setsid codium /home/mar/.config/quickshell &"]
+            command: ["bash", "-c", "setsid zeditor /home/mar/.config/quickshell &"]
             settingsWindow: settingsMenu
             centerWindow: mainCenterWindow
         }

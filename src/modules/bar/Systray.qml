@@ -1,7 +1,5 @@
 import QtQuick
-import Quickshell
 import Quickshell.Services.SystemTray
-import Quickshell.Widgets
 
 import "../../core"
 
@@ -39,16 +37,14 @@ Rectangle {
                     cursorShape: Qt.PointingHandCursor
                     acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-                    onClicked: (mouse) => {
+                    onClicked: mouse => {
                         if (mouse.button === Qt.LeftButton) {
                             //console.log("Left click - hasMenu:", modelData.hasMenu, "id:", modelData.id)
-                            modelData.activate()
+                            modelData.activate();
                         }
                         if (mouse.button === Qt.RightButton && modelData.hasMenu) {
                             //console.log("Right click - hasMenu:", modelData.hasMenu, "id:", modelData.id)
-                            modelData.display(bar,
-                                trayItem.mapToItem(bar.contentItem, mouseX, mouseY).x,
-                                trayItem.mapToItem(bar.contentItem, mouseX, mouseY).y)
+                            modelData.display(bar, trayItem.mapToItem(bar.contentItem, mouseX, mouseY).x, trayItem.mapToItem(bar.contentItem, mouseX, mouseY).y);
                         }
                     }
                 }

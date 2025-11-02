@@ -1,8 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
-import Quickshell
-import Quickshell.Io
-import Quickshell.Widgets
 
 import "../../core"
 
@@ -33,7 +29,7 @@ Rectangle {
         cursorShape: Qt.PointingHandCursor
         onClicked: {
             if (onClickedCallback) {
-                onClickedCallback()
+                onClickedCallback();
             }
         }
     }

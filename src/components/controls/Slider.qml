@@ -1,10 +1,7 @@
 import QtQuick
 import QtQuick.Controls
-import Quickshell
-import Quickshell.Widgets
 
 import "../../core"
-import "../../core/services"
 
 Row {
     id: root
@@ -14,7 +11,7 @@ Row {
     property real value
     property bool inactive
 
-    property var onValueChangedCallback: function(newValue) {}
+    property var onValueChangedCallback: function (newValue) {}
 
     Slider {
         id: slider
@@ -26,7 +23,7 @@ Row {
 
         onValueChanged: {
             if (pressed) {
-                root.onValueChangedCallback(value)
+                root.onValueChangedCallback(value);
             }
         }
 
@@ -44,7 +41,7 @@ Row {
                 color: inactive ? Theme.fgInactive : Theme.accent
             }
         }
-        
+
         handle: Rectangle {
             id: volumeOutHandle
             width: 20

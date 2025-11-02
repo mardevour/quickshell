@@ -1,6 +1,5 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
 
 import "../../core"
 
@@ -13,7 +12,7 @@ PanelWindow {
     anchors {
         top: true
         left: true
-        right: true   
+        right: true
     }
     margins {
         top: 3
@@ -30,7 +29,7 @@ PanelWindow {
         radius: Theme.barRadius
         border.color: Theme.border
         border.width: 1
-        
+
         Row {
             id: left
             spacing: 0

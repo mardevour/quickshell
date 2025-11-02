@@ -1,5 +1,4 @@
 import QtQuick
-import Quickshell
 
 import "../../core"
 import "../../core/services" as Services
@@ -16,71 +15,71 @@ Rectangle {
     Services.NiriSocket {
         id: niriSocket
 
-        onEvent: function(type, data) {
+        onEvent: function (type, data) {
             //console.log("EVENTO:", type, "Data:", JSON.stringify(data).substring(0, 200) + "...")
 
             if (type === "WindowsChanged") {
-                root.windows = data.windows || []
-                root.updateFocusedWindowTitle()
-                return
+                root.windows = data.windows || [];
+                root.updateFocusedWindowTitle();
+                return;
             }
 
             if (type === "WindowFocusChanged") {
-                root.updateWindowFocus(data.id)
-                root.updateFocusedWindowTitle()
-                return
+                root.updateWindowFocus(data.id);
+                root.updateFocusedWindowTitle();
+                return;
             }
 
             if (type === "WorkspaceActiveWindowChanged") {
                 if (data.active_window_id) {
-                    root.updateWindowFocus(data.active_window_id)
-                    root.updateFocusedWindowTitle()
+                    root.updateWindowFocus(data.active_window_id);
+                    root.updateFocusedWindowTitle();
                 }
-                return
+                return;
             }
         }
     }
 
     function updateWindowFocus(focusedWindowId) {
         for (let i = 0; i < root.windows.length; i++) {
-            root.windows[i].is_focused = (root.windows[i].id === focusedWindowId)
+            root.windows[i].is_focused = (root.windows[i].id === focusedWindowId);
         }
     }
 
     function updateFocusedWindowTitle() {
         if (!root.windows.length) {
-            root.windowTitle = ""
-            return
+            root.windowTitle = "";
+            return;
         }
-        
-        let focusedWindow = null
+
+        let focusedWindow = null;
         for (let i = 0; i < root.windows.length; i++) {
             if (root.windows[i].is_focused) {
-                focusedWindow = root.windows[i]
-                break
+                focusedWindow = root.windows[i];
+                break;
             }
         }
-        
+
         if (focusedWindow) {
-            let newTitle = (focusedWindow.app_id || "unknown") + ": " + (focusedWindow.title || "")
-            root.windowTitle = newTitle
+            let newTitle = (focusedWindow.app_id || "unknown") + ": " + (focusedWindow.title || "");
+            root.windowTitle = newTitle;
         } else {
-            root.windowTitle = ""
+            root.windowTitle = "";
         }
     }
 
     Component.onCompleted: {
-        niriSocket.send('"GetState"')
+        niriSocket.send('"GetState"');
     }
-    
+
     Text {
+        id: windowTitleText
         text: {
             if (root.windowTitle.length > 40) {
-                return root.windowTitle.substring(0, 37) + "..."
+                return root.windowTitle.substring(0, 37) + "...";
             }
-            return root.windowTitle
+            return root.windowTitle;
         }
-        id: windowTitleText
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.leftMargin: 5

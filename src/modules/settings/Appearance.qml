@@ -1,4 +1,3 @@
-import Quickshell
 import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
@@ -15,11 +14,13 @@ Rectangle {
     property var themesList
     property var accentColorIdx
 
-    ThemeHandler { 
-        id: themeHandler 
+    ThemeHandler {
+        id: themeHandler
         themeSingleton: Theme
     }
-    ConfigHandler { id: configHandler }
+    ConfigHandler {
+        id: configHandler
+    }
 
     property var themeSingleton: Theme
 
@@ -202,8 +203,8 @@ Rectangle {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                accentColorList.selectedIndex = index
-                                accentColorIdx = index
+                                accentColorList.selectedIndex = index;
+                                accentColorIdx = index;
                             }
                         }
                     }
@@ -254,15 +255,15 @@ Rectangle {
             onClicked: {
                 try {
                     if (accentColorIdx !== undefined && accentColorIdx !== null) {
-                        let colorIdx = `color${accentColorIdx}`
+                        let colorIdx = `color${accentColorIdx}`;
 
-                        configHandler.saveOption("accent-color", colorIdx)
-                        applyProcess.running = true
+                        configHandler.saveOption("accent-color", colorIdx);
+                        applyProcess.running = true;
                     } else {
-                        console.warn("[Appearance] no hay color seleccionado")
+                        console.warn("[Appearance] no hay color seleccionado");
                     }
                 } catch (error) {
-                    console.error("[Appearance]", error)
+                    console.error("[Appearance]", error);
                 }
             }
         }
@@ -272,24 +273,50 @@ Rectangle {
         }
     }
 
-    ListModel { id: colorList }
+    ListModel {
+        id: colorList
+    }
 
     Component.onCompleted: {
-        themeHandler.loadThemesList()
+        themeHandler.loadThemesList();
 
         // hay que crear el ListModel colorList así porque no acepta variables dinámicas 🙃
         const colors = [
-            { buttonColor: Theme.color0, borderColor: Theme.color8 },
-            { buttonColor: Theme.color1, borderColor: Theme.color9 },
-            { buttonColor: Theme.color2, borderColor: Theme.color10 },
-            { buttonColor: Theme.color3, borderColor: Theme.color11 },
-            { buttonColor: Theme.color4, borderColor: Theme.color12 },
-            { buttonColor: Theme.color5, borderColor: Theme.color13 },
-            { buttonColor: Theme.color6, borderColor: Theme.color14 },
-            { buttonColor: Theme.color7, borderColor: Theme.color15 },
-        ]
+            {
+                buttonColor: Theme.color0,
+                borderColor: Theme.color8
+            },
+            {
+                buttonColor: Theme.color1,
+                borderColor: Theme.color9
+            },
+            {
+                buttonColor: Theme.color2,
+                borderColor: Theme.color10
+            },
+            {
+                buttonColor: Theme.color3,
+                borderColor: Theme.color11
+            },
+            {
+                buttonColor: Theme.color4,
+                borderColor: Theme.color12
+            },
+            {
+                buttonColor: Theme.color5,
+                borderColor: Theme.color13
+            },
+            {
+                buttonColor: Theme.color6,
+                borderColor: Theme.color14
+            },
+            {
+                buttonColor: Theme.color7,
+                borderColor: Theme.color15
+            },
+        ];
         for (let i = 0; i < colors.length; i++) {
-            colorList.append(colors[i])
+            colorList.append(colors[i]);
         }
     }
 }

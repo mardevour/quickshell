@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
 
@@ -40,7 +39,7 @@ Rectangle {
             color: Theme.fg
             Layout.alignment: Qt.AlignHCenter
             elide: Text.ElideRight
-            width: parent.width
+            Layout.preferredWidth: parent.width
         }
     }
 
@@ -50,10 +49,10 @@ Rectangle {
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
         onClicked: {
-            process.startDetached()
+            process.startDetached();
             if (settingsWindow) {
-                settingsWindow.destroy()
-                centerWindow.destroy()
+                settingsWindow.destroy();
+                centerWindow.destroy();
             }
         }
     }

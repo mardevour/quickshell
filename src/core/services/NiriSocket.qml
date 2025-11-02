@@ -17,32 +17,32 @@ Item {
     Socket {
         id: socket
         path: root.socketPath
-        
+
         parser: SplitParser {
             onRead: line => {
                 try {
-                    const event = JSON.parse(line)
+                    const event = JSON.parse(line);
                     if (root.onEvent) {
-                        const eventType = Object.keys(event)[0]
-                        root.onEvent(eventType, event[eventType])
+                        const eventType = Object.keys(event)[0];
+                        root.onEvent(eventType, event[eventType]);
                     }
                 } catch (e) {
-                    console.warn("NiriSocket: Failed to parse event:", e)
+                    console.warn("NiriSocket: Failed to parse event:", e);
                 }
             }
         }
 
         onConnectionStateChanged: {
-            root.connected = socket.connected
+            root.connected = socket.connected;
             if (root.onConnectionChanged) {
-                root.onConnectionChanged(root.connected)
+                root.onConnectionChanged(root.connected);
             }
-            
+
             if (socket.connected) {
-                root._reconnectAttempt = 0
-                root.send('"EventStream"')
+                root._reconnectAttempt = 0;
+                root.send('"EventStream"');
             } else if (root.connected) {
-                root._scheduleReconnect()
+                root._scheduleReconnect();
             }
         }
     }
@@ -50,46 +50,48 @@ Item {
     Timer {
         id: reconnectTimer
         onTriggered: {
-            socket.connected = false
-            Qt.callLater(() => socket.connected = true)
+            socket.connected = false;
+            Qt.callLater(() => socket.connected = true);
         }
     }
 
     function send(data) {
-        if (!socket.connected) return false
-        
-        const json = typeof data === "string" ? data : JSON.stringify(data)
-        const message = json.endsWith("\n") ? json : json + "\n"
-        socket.write(message)
-        socket.flush()
-        return true
+        if (!socket.connected)
+            return false;
+
+        const json = typeof data === "string" ? data : JSON.stringify(data);
+        const message = json.endsWith("\n") ? json : json + "\n";
+        socket.write(message);
+        socket.flush();
+        return true;
     }
 
     function ask(string) {
-        if (!socket.connected) return false
-        
-        const message = string
-        socket.write(message)
-        socket.flush()
-        return true
+        if (!socket.connected)
+            return false;
+
+        const message = string;
+        socket.write(message);
+        socket.flush();
+        return true;
     }
 
     function connect() {
-        socket.connected = true
+        socket.connected = true;
     }
-    
+
     function disconnect() {
-        socket.connected = false
-        reconnectTimer.stop()
+        socket.connected = false;
+        reconnectTimer.stop();
     }
 
     function _scheduleReconnect() {
-        const pow = Math.min(_reconnectAttempt, 10)
-        const base = Math.min(_reconnectBaseMs * Math.pow(2, pow), _reconnectMaxMs)
-        const jitter = Math.floor(Math.random() * Math.floor(base / 4))
-        reconnectTimer.interval = base + jitter
-        reconnectTimer.restart()
-        _reconnectAttempt++
+        const pow = Math.min(_reconnectAttempt, 10);
+        const base = Math.min(_reconnectBaseMs * Math.pow(2, pow), _reconnectMaxMs);
+        const jitter = Math.floor(Math.random() * Math.floor(base / 4));
+        reconnectTimer.interval = base + jitter;
+        reconnectTimer.restart();
+        _reconnectAttempt++;
     }
 
     function switchToWorkspace(workspaceIndex) {
@@ -100,17 +102,25 @@ Item {
                 path: "${root.socketPath}"
                 connected: true
             }
-        `, root)
-        
-        const message = JSON.stringify({"Action":{"FocusWorkspace":{"reference":{"Index":workspaceIndex}}}}) + "\n"
-        tempSocket.write(message)
-        tempSocket.flush()
-        tempSocket.connected = false
-        tempSocket.destroy()
+        `, root);
+
+        const message = JSON.stringify({
+            "Action": {
+                "FocusWorkspace": {
+                    "reference": {
+                        "Index": workspaceIndex
+                    }
+                }
+            }
+        }) + "\n";
+        tempSocket.write(message);
+        tempSocket.flush();
+        tempSocket.connected = false;
+        tempSocket.destroy();
     }
 
     function getFocusedWindowTitle() {
-        return send('"FocusedWindow"')
+        return send('"FocusedWindow"');
     }
 
     // function focusWindow(windowId) {
@@ -131,7 +141,7 @@ Item {
 
     onSocketPathChanged: {
         if (socketPath && socketPath.length > 0) {
-            connect()
+            connect();
         }
     }
 }
