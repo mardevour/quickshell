@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+PINK='\033[0;35m'
+RESET='\033[0m'
+
+export QML_XHR_ALLOW_FILE_READ=1
+echo -e "${PINK}[INFO]${RESET} QML_XHR_ALLOW_FILE_READ: $QML_XHR_ALLOW_FILE_READ"
+
+if pgrep "quickshell" > /dev/null; then
+    qs_pid=$(pgrep "quickshell")
+    for pid in $qs_pid; do
+        echo -e "${PINK}[INFO]${RESET} found quickshell process with PID: $pid"
+        kill "$pid"
+        echo -e "${PINK}[INFO]${RESET} killing it 🔪🔪🔪"
+    done
+else
+    echo -e "${PINK}[INFO]${RESET} no quickshell processes found"
+    echo -e "${PINK}[INFO]${RESET} starting quickshell..."
+fi
+
+quickshell &
