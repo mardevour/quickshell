@@ -4,8 +4,7 @@ import Quickshell
 import Quickshell.Widgets
 import Quickshell.Wayland
 
-import "../../core"
-import "../../core/services"
+import "../core"
 
 PanelWindow {
     id: powerMenu
@@ -18,12 +17,6 @@ PanelWindow {
 
     property int selectedIndex: 0
     property var options: ["lock", "logout", "reboot", "poweroff"]
-
-    // load and apply config
-    property var config: ConfigHandler {}
-    Component.onCompleted: {
-        config.loadConfig();
-    }
 
     function executeAction(action) {
         powerMenu.visible = false;
@@ -50,48 +43,13 @@ PanelWindow {
         anchors.fill: parent
         Keys.onPressed: event => {
             switch (event.key) {
-            case Qt.Key_Up:
-                selectedIndex = (selectedIndex - 1 + options.length) % options.length;
-                event.accepted = true;
-                break;
-            case Qt.Key_Down:
-                selectedIndex = (selectedIndex + 1) % options.length;
-                event.accepted = true;
-                break;
-            case Qt.Key_Return:
-            case Qt.Key_Enter:
-            case Qt.Key_Space:
-                executeAction(options[selectedIndex]);
-                event.accepted = true;
-                break;
             case Qt.Key_Escape:
                 powerMenu.destroy();
                 event.accepted = true;
                 break;
-
-            // case Qt.Key_1:
-            //     executeAction("lock")
-            //     event.accepted = true
-            //     break
-
-            // case Qt.Key_2:
-            //     executeAction("logout")
-            //     event.accepted = true
-            //     break
-
-            // case Qt.Key_3:
-            //     executeAction("reboot")
-            //     event.accepted = true
-            //     break
-
-            // case Qt.Key_4:
-            //     executeAction("poweroff")
-            //     event.accepted = true
-            //     break
             }
         }
 
-        // Forzar focus cuando se abre
         Component.onCompleted: {
             forceActiveFocus();
             selectedIndex = 0;
@@ -140,14 +98,14 @@ PanelWindow {
 
                         Text {
                             text: ""
-                            color: "white"
+                            color: Theme.fg
                             font.pixelSize: 16
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             text: "Bloquear"
-                            color: "white"
+                            color: Theme.fg
                             font.pixelSize: 14
                             font.family: Theme.font
                             font.weight: Theme.fontWeight
@@ -179,14 +137,14 @@ PanelWindow {
 
                         Text {
                             text: "󰅚"
-                            color: "white"
+                            color: Theme.fg
                             font.pixelSize: 16
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             text: "Cerrar Sesión"
-                            color: "white"
+                            color: Theme.fg
                             font.pixelSize: 14
                             font.family: Theme.font
                             font.weight: Theme.fontWeight
@@ -218,14 +176,14 @@ PanelWindow {
 
                         Text {
                             text: "󰑓"
-                            color: "#ffa500"
+                            color: Theme.color3
                             font.pixelSize: 16
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             text: "Reiniciar"
-                            color: "#ffa500"
+                            color: Theme.color3
                             font.pixelSize: 14
                             font.family: Theme.font
                             font.weight: Theme.fontWeight
@@ -257,14 +215,14 @@ PanelWindow {
 
                         Text {
                             text: ""
-                            color: "#ff4444"
+                            color: Theme.color1
                             font.pixelSize: 16
                             anchors.verticalCenter: parent.verticalCenter
                         }
 
                         Text {
                             text: "Apagar"
-                            color: "#ff4444"
+                            color: Theme.color1
                             font.pixelSize: 14
                             font.family: Theme.font
                             font.weight: Theme.fontWeight
@@ -281,25 +239,25 @@ PanelWindow {
                     }
                 }
 
-                // Separador
+                // separador
                 Rectangle {
                     Layout.fillWidth: true
                     height: 1
-                    color: "#404040"
+                    color: Theme.separatorColor
                     Layout.topMargin: 10
                     Layout.bottomMargin: 5
                 }
 
-                // Botón Cancelar
+                // botón Cancelar
                 Rectangle {
                     Layout.fillWidth: true
                     height: 35
                     radius: 6
-                    color: cancelArea.containsMouse ? '#757575' : "#505050"
+                    color: cancelArea.containsMouse ? Theme.bgAltHover : Theme.bgAlt
 
                     Text {
                         text: "Cancelar"
-                        color: "white"
+                        color: Theme.fg
                         font.pixelSize: 14
                         font.family: Theme.font
                         font.weight: Theme.fontWeight

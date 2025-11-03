@@ -1,8 +1,9 @@
 import QtQuick
 import QtQuick.Layouts
+import Quickshell.Io
 
 import "../../core"
-import "../../components/controls" as Controls
+import "../../modules/reusable"
 
 Rectangle {
     id: root
@@ -20,9 +21,11 @@ Rectangle {
     property string name
     property bool inactive
     property real value
+    property var command: []
 
     property var onValueChangedCallback: function (newValue) {}
     property var onToggleCallback: function () {}
+    property var onHeaderClickedCallback: function () {}
 
     ColumnLayout {
         anchors.fill: parent
@@ -58,7 +61,7 @@ Rectangle {
                         anchors.centerIn: parent
                         text: icon
                         color: inactive ? Theme.color1 : Theme.fg
-                        font.bold: true
+                        font.family: ""
                         font.pixelSize: 17
                     }
                     MouseArea {
@@ -77,6 +80,7 @@ Rectangle {
                     Layout.alignment: Qt.AlignVCenter
                     text: name
                     color: Theme.fg
+                    font.pixelSize: 14
                     font.bold: true
                     font.family: Theme.font
                 }
@@ -85,6 +89,7 @@ Rectangle {
                 }
                 Text {
                     text: ""
+                    font.pixelSize: 20
                     color: Theme.fg
                     Layout.alignment: Qt.AlignVCenter
                 }
@@ -101,8 +106,14 @@ Rectangle {
                 cursorShape: Qt.PointingHandCursor
 
                 onClicked: {
-                    console.log("Header clicked (excluding icon)");
+                    process.running = true;
+                    onHeaderClickedCallback();
                 }
+            }
+
+            Process {
+                id: process
+                command: root.command
             }
         }
 
@@ -136,7 +147,7 @@ Rectangle {
                         Layout.alignment: Qt.AlignVCenter
                     }
 
-                    Controls.Slider {
+                    Slider {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignVCenter
                         value: root.value

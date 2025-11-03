@@ -1,14 +1,13 @@
 import Quickshell
 import QtQuick
 
-import "../../core"
-
-import "../../components/" as Components
-import "../../components/buttons/" as Buttons
-import "../../components/indicators/" as Indicators
+import "../core"
+import "../modules"
+import "../modules/reusable"
 
 PanelWindow {
     id: bar
+
     anchors {
         top: true
         left: true
@@ -38,7 +37,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
 
             // launcher
-            Buttons.Button {
+            Button {
                 id: launcherButton
                 icon: "󰣇"
                 iconColor: Theme.accent
@@ -47,10 +46,10 @@ PanelWindow {
                 height: Theme.barHeight - Theme.barElementMargin
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Components.Separator {}
-            Indicators.Workspace {}
-            Components.Separator {}
-            Indicators.FocusedWindow {}
+            Separator {}
+            Workspace {}
+            Separator {}
+            FocusedWindow {}
         }
 
         Row {
@@ -92,22 +91,22 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
 
             Systray {}
-            Indicators.Notification {
+            Notification {
                 height: Theme.barHeight - Theme.barElementMargin
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Components.Separator {}
-            Indicators.Date {
+            Separator {}
+            Date {
                 height: Theme.barHeight - Theme.barElementMargin
                 anchors.verticalCenter: parent.verticalCenter
             }
-            Components.Separator {}
-            Buttons.Button {
+            Separator {}
+            Button {
                 id: controlCenterButton
                 icon: ""
                 iconColor: Theme.accent
                 launchesWindow: true
-                windowPath: "/home/mar/.config/quickshell/modules/controlCenter/ControlCenter.qml"
+                windowPath: "/home/mar/.config/quickshell/panels/controlCenter/ControlCenter.qml"
                 iconSize: Theme.barCenterIconSize
                 height: Theme.barHeight - Theme.barElementMargin
                 anchors.verticalCenter: parent.verticalCenter

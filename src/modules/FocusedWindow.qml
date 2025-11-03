@@ -1,7 +1,8 @@
 import QtQuick
 
-import "../../core"
-import "../../core/services" as Services
+import "../core"
+import "../services"
+import "../modules/reusable"
 
 Rectangle {
     id: root
@@ -12,7 +13,7 @@ Rectangle {
     property string windowTitle: ""
     property var windows: []
 
-    Services.NiriSocket {
+    NiriSocket {
         id: niriSocket
 
         onEvent: function (type, data) {

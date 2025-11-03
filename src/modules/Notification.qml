@@ -1,7 +1,7 @@
 import QtQuick
 import Quickshell.Io
 
-import "../../core"
+import "../core"
 
 Rectangle {
     id: launcher

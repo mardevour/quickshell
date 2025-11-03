@@ -6,9 +6,9 @@ import Quickshell.Wayland
 import Quickshell.Io
 
 import "../../core"
-import "../../core/services"
+import "../../services"
+import "../../modules/reusable"
 import "./" as Here
-import "../../components/buttons" as Buttons
 
 PanelWindow {
     id: mainCenterWindow
@@ -26,12 +26,6 @@ PanelWindow {
 
     //WlrLayershell.keyboardFocus: WlrLayershell.OnDemand
     WlrLayershell.keyboardFocus: WlrLayershell.None
-
-    // load and apply config
-    property var config: ConfigHandler {}
-    Component.onCompleted: {
-        config.loadConfig();
-    }
 
     property string username: ""
     property string uptime: ""
@@ -126,12 +120,13 @@ PanelWindow {
                             Text {
                                 text: ""
                                 color: Theme.accent
-                                font.pixelSize: 17
+                                font.pixelSize: 20
                                 anchors.verticalCenter: parent.verticalCenter
                             }
                             Text {
                                 text: username
                                 color: Theme.fg
+                                font.pixelSize: 15
                                 font.family: Theme.font
                                 font.weight: Theme.fontWeight
                                 anchors.verticalCenter: parent.verticalCenter
@@ -143,12 +138,13 @@ PanelWindow {
                             Text {
                                 text: "󰣇"
                                 color: Theme.accent
-                                font.pixelSize: 18
+                                font.pixelSize: 21
                                 anchors.verticalCenter: parent.verticalCenter
                             }
                             Text {
                                 text: "Arch Linux"
                                 color: Theme.fg
+                                font.pixelSize: 15
                                 font.family: Theme.font
                                 font.weight: Theme.fontWeight
                                 anchors.verticalCenter: parent.verticalCenter
@@ -160,12 +156,13 @@ PanelWindow {
                             Text {
                                 text: ""
                                 color: Theme.accent
-                                font.pixelSize: 19
+                                font.pixelSize: 22
                                 anchors.verticalCenter: parent.verticalCenter
                             }
                             Text {
                                 text: "uptime " + uptime
                                 color: Theme.fg
+                                font.pixelSize: 15
                                 font.family: Theme.font
                                 font.weight: Theme.fontWeight
                                 anchors.verticalCenter: parent.verticalCenter
@@ -179,22 +176,7 @@ PanelWindow {
 
                     Row {
                         id: headerButtons
-                        Buttons.Button {
-                            id: settingsButton
-                            icon: ""
-                            iconColor: Theme.fg
-                            iconSize: Theme.centerIconSize
-                            height: Theme.centerIconSize + 5
-                            width: Theme.centerIconSize + 5
-
-                            launchesWindow: true
-                            windowPath: "/home/mar/.config/quickshell/modules/settings/SettingsWindow.qml"
-
-                            onClickedCallback: function () {
-                                mainCenterWindow.visible = false;
-                            }
-                        }
-                        Buttons.Button {
+                        Button {
                             id: powerButton
                             icon: "󰐥"
                             iconColor: Theme.fg
@@ -203,7 +185,7 @@ PanelWindow {
                             width: Theme.centerIconSize + 5
 
                             launchesWindow: true
-                            windowPath: "/home/mar/.config/quickshell/modules/windows/PowerModule.qml"
+                            windowPath: "/home/mar/.config/quickshell/panels/PowerModule.qml"
 
                             onClickedCallback: function () {
                                 mainCenterWindow.visible = false;
@@ -222,6 +204,7 @@ PanelWindow {
                     name: AudioService.sink.nickname
                     value: AudioService.volumeOut
                     inactive: AudioService.sink.audio.muted
+                    command: ["bash", "-c", "pavucontrol -t 3"]
 
                     onValueChangedCallback: function (newValue) {
                         if (AudioService.sink) {
@@ -232,12 +215,17 @@ PanelWindow {
                     onToggleCallback: function () {
                         AudioService.sink.audio.muted = !AudioService.sink.audio.muted;
                     }
+
+                    onHeaderClickedCallback: function () {
+                        mainCenterWindow.visible = false;
+                    }
                 }
                 Here.SliderBox {
                     icon: AudioService.source.audio.muted ? "" : ""
                     name: AudioService.source.nickname
                     value: AudioService.volumeIn
                     inactive: AudioService.source.audio.muted
+                    command: ["bash", "-c", "pavucontrol -t 4"]
 
                     onValueChangedCallback: function (newValue) {
                         if (AudioService.source) {
@@ -247,6 +235,10 @@ PanelWindow {
 
                     onToggleCallback: function () {
                         AudioService.source.audio.muted = !AudioService.source.audio.muted;
+                    }
+
+                    onHeaderClickedCallback: function () {
+                        mainCenterWindow.visible = false;
                     }
                 }
             }

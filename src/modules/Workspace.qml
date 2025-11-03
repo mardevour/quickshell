@@ -1,8 +1,8 @@
 import QtQuick
 
-import "../../core"
-import "../../core/services" as Services
-import "../../components/buttons" as Buttons
+import "../core"
+import "../services"
+import "../modules/reusable"
 
 Rectangle {
     id: root
@@ -17,7 +17,7 @@ Rectangle {
     property var currentMonitorWorkspaces: []
     property int currentWorkspaceId: -1
 
-    Services.NiriSocket {
+    NiriSocket {
         id: niriSocket
 
         onEvent: function (type, data) {
@@ -90,7 +90,7 @@ Rectangle {
         rightPadding: 5
         Repeater {
             model: root.currentMonitorWorkspaces
-            delegate: Buttons.WorkspaceButton {
+            delegate: WorkspaceButton {
                 isActive: modelData.is_active || modelData.is_focused
                 text: modelData.idx ? modelData.idx.toString() : "?"
                 onClickedCallback: function () {

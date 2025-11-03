@@ -1,6 +1,6 @@
 import QtQuick
 
-import "../core"
+import "../../core"
 
 Rectangle {
     color: "transparent"

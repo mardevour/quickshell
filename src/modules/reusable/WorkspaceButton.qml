@@ -1,6 +1,8 @@
 import QtQuick
 
 import "../../core"
+import "../../services"
+import "../../modules/reusable"
 
 Rectangle {
     id: root

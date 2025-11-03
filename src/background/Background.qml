@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Wayland
 
-import "../../core"
+import "../core"
 
 Variants {
     id: root
