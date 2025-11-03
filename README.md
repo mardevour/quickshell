@@ -9,8 +9,6 @@ shell escrita con [quickshell](https://quickshell.org/)
 - [walker](https://github.com/abenz1267/walker) como launcher
 
 #### todo:
-- **arreglar workspaces en múltiples monitores**
-- menús de config
 - calendario
 - temas:
     - dracula
