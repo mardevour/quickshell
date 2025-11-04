@@ -242,6 +242,27 @@ PanelWindow {
                     }
                 }
             }
+            GridLayout {
+                columns: 2
+                columnSpacing: 5
+                rowSpacing: 5
+                // anchors.horizontalCenter: parent.horizontalCenter
+                // anchors.bottomMargin: 5
+                Layout.topMargin: Theme.centerWindowPadding / 2
+                Layout.bottomMargin: Theme.centerWindowPadding
+                Layout.leftMargin: Theme.centerWindowPadding
+                Layout.rightMargin: Theme.centerWindowPadding
+                Layout.alignment: Qt.AlignHCenter
+
+                Here.Toggle {
+                    icons: ["", ""]
+                    tag: ["Modo día", "Modo noche"]
+                }
+                Here.Toggle {
+                    icons: ["", ""]
+                    tag: ["Modo día", "Modo noche"]
+                }
+            }
         }
     }
 }

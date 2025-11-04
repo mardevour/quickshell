@@ -9,7 +9,8 @@ Item {
         id: config
     }
 
-    property string themeName: config.themeName
+    property bool darkMode: config.darkMode
+    property string themeName: darkMode ? config.themeDark : config.themeLight
 
     Loader {
         id: themeLoader
@@ -64,7 +65,7 @@ Item {
     property string font: "NotoSansM Nerd Font Mono"
     property int fontWeight: 500
 
-    property string wallpaper: "/home/mar/Imágenes/fondos/walls-catppuccin-mocha/clouds-5.jpg"
+    property string wallpaper: config.wall
 
     // sizes, margins, borders, etc
     // bar
